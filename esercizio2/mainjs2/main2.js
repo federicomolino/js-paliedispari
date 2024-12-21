@@ -1,7 +1,14 @@
+//Selezione elementi per parola palindroma
 const inputinsertText = document.querySelector('#insertText');
 const submitButton = document.querySelector('#submit');
 const finalResult = document.querySelector('#result');
 const spinnerButton = document.querySelector('#spinnerButton')
+
+//Selezione elementi per Pari o Dispari
+const inputNumber = document.querySelector('#inputInsertNumber');
+const submitButtonResult = document.querySelector('#submitResult');
+const resultPariDispari = document.querySelector('#secondResult');
+const spinnerButtonPariDispari = document.querySelector('#spinnerButtonPariDispari')
 
 function insertText (nameText){
     const text = nameText;
@@ -42,13 +49,6 @@ submitButton.addEventListener('click', function(event){
 
 
 
-
-
-const inputNumber = document.querySelector('#inputInsertNumber');
-const submitButtonResult = document.querySelector('#submitResult');
-const resultPariDispari = document.querySelector('#resultPariDispari');
-
-
 // Faccio Generare solo il numero random e ritorno il valore
 function generationNumber(){
    return Math.floor((Math.random()* 5)+1)
@@ -74,40 +74,48 @@ submitButtonResult.addEventListener('click', function(event){
     //trasformo il valore inserito dall'utente tutto in minuscolo
     let pariDispariLower = pariDispari.toLowerCase();
 
-    if(pariDispariLower === ('pari') || pariDispariLower === ('dispari')){
+    spinnerButtonPariDispari.classList.toggle('d-none')
 
-        const insertNumber = prompt ('Inserisci un numero da 1 a 5!');
+    setTimeout(() => {
+        if(pariDispariLower === ('pari') || pariDispariLower === ('dispari')){
 
-        //trasformo la stringa in numero
-        const newNumber = parseInt(insertNumber);
+            const insertNumber = prompt ('Inserisci un numero da 1 a 5!');
 
-        if(newNumber === 0 || newNumber > 5 || isNaN(newNumber)){
-            console.log('Inserisci un numero da 1 a 5')            
+            //trasformo la stringa in numero
+            const newNumber = parseInt(insertNumber);
 
+            if(newNumber === 0 || newNumber > 5 || isNaN(newNumber)){
+                resultPariDispari.innerHTML ='Inserisci un numero da 1 a 5';
+                resultPariDispari.classList.add('text-red');            
+
+            }else{
+
+                // inserisco dentro resul il risultato totale della funzione
+                let result = sumNumber(newNumber);
+
+                let resultUtent;
+
+                //verifico se pari o dispari
+                if(result % 2 === 0){
+                    resultUtent = 'Pari';
+                }else{
+                    resultUtent = 'Dispari';
+                }
+
+                //Verfico se il risultato è uguale quello inserito dall'utente
+                if(resultUtent === pariDispariLower){
+                    resultPariDispari.innerHTML =`Hai vinto il risultano è : ${result}"`;
+                }else{
+                    resultPariDispari.innerHTML =`Hai perso il risultano è : ${result}`;
+                }
+            }
         }else{
-
-            // inserisco dentro resul il risultato totale della funzione
-            let result = sumNumber(newNumber);
-
-            let resultUtent;
-
-            //verifico se pari o dispari
-            if(result % 2 === 0){
-                resultUtent = 'Pari';
-            }else{
-                resultUtent = 'Dispari';
-            }
-
-            //Verfico se il risultato è uguale quello inserito dall'utente
-            if(resultUtent === pariDispariLower){
-                console.log(`Hai vinto il risultano è:"${result}"`)
-            }else{
-                console.log(`Hai perso il risultano è:"${result}"`)
-            }
+            resultPariDispari.innerHTML = 'Devi inserire "Pari" o "Dispari", occhio agli spazi!!!';
+            resultPariDispari.classList.add('text-red');
         }
-    }else{
-        console.log('Devi inserire "Pari" o "Dispari", occhio agli spazi!!!');
-    }
+
+        spinnerButtonPariDispari.classList.toggle('d-none')
+    }, 1500);
 })
 
 
