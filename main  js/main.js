@@ -24,10 +24,12 @@ if(insertText(nameText)){
     console.log(`"${nameText}" non è una parola palindroma!`);
 }*/
 
+// Faccio Generare solo il numero random e ritorno il valore
 function generationNumber(){
    return Math.floor((Math.random()* 5)+1)
 }
 
+// sommo il numero random con quello generato dall'utente
 function sumNumber (newNumber){
     //Inserisco il numero random genrato in un let
     let numberRandom = generationNumber()
@@ -58,10 +60,20 @@ if(pariDispari === ('Pari') || pariDispari === ('Dispari')){
         // inserisco dentro resul il risultato totale della funzione
         let result = sumNumber(newNumber);
 
+        let resultUtent;
+
+        //verifico se pari o dispari
         if(result % 2 === 0){
-            console.log('Ha vinto Pari')
+            resultUtent = 'Pari';
         }else{
-            console.log('Ha vinto Dispari!')
+            resultUtent = 'Dispari';
+        }
+
+        //Verfico se il risultato è uguale quello inserito dall'utente
+        if(resultUtent === pariDispari){
+            console.log(`Hai vinto il risultano è:"${result}"`)
+        }else{
+            console.log(`Hai perso il risultato è:"${result}"`)
         }
     }
 }else{
