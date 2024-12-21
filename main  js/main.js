@@ -1,4 +1,4 @@
-/*function insertText (nameText){
+function insertText (nameText){
     const text = nameText;
     if(isNaN(text)){
 
@@ -22,7 +22,7 @@ if(insertText(nameText)){
     console.log(`"${nameText}" è una parola palindroma!`);
 }else{
     console.log(`"${nameText}" non è una parola palindroma!`);
-}*/
+}
 
 // Faccio Generare solo il numero random e ritorno il valore
 function generationNumber(){
@@ -77,6 +77,6 @@ if(pariDispari === ('pari') || pariDispari === ('dispari')){
         }
     }
 }else{
-    console.log('Devi inserire "Pari" o "Dispari"');
+    console.log('Devi inserire "Pari" o "Dispari", occhio agli spazi!!!');
 }
 
