@@ -31,21 +31,21 @@ function generationNumber(){
 
 // sommo il numero random con quello generato dall'utente
 function sumNumber (newNumber){
-    //Inserisco il numero random genrato in un let
+    //Richiamo la funzione generationNumber,inserisco il numero random genrato in un let
     let numberRandom = generationNumber()
-    console.log(`"${numberRandom}" numero random generato`);
-        
+
     //sommo il numero randoman con quello generato
     let finalresult = numberRandom + newNumber;
-    console.log(`"${finalresult}" ecco il risultato totale`);
-
     //ritorno il risultato finale
     return finalresult;
 }
 
-const pariDispari = prompt ('Vuoi essere Pari o Dispari?');
+const InsertpariDispari = prompt ('Vuoi essere Pari o Dispari?');
 
-if(pariDispari === ('Pari') || pariDispari === ('Dispari')){
+//trasformo il valore inserito dall'utente tutto in minuscolo
+const pariDispari = InsertpariDispari.toLowerCase()
+
+if(pariDispari === ('pari') || pariDispari === ('dispari')){
 
     const insertNumber = prompt ('Inserisci un numero da 1 a 5!');
 
