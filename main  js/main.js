@@ -1,4 +1,4 @@
-function insertText (nameText){
+/*function insertText (nameText){
     const text = nameText;
     if(isNaN(text)){
 
@@ -22,4 +22,49 @@ if(insertText(nameText)){
     console.log(`"${nameText}" è una parola palindroma!`);
 }else{
     console.log(`"${nameText}" non è una parola palindroma!`);
+}*/
+
+function generationNumber(){
+   return Math.floor((Math.random()* 5)+1)
 }
+
+function sumNumber (newNumber){
+    //Inserisco il numero random genrato in un let
+    let numberRandom = generationNumber()
+    console.log(`"${numberRandom}" numero random generato`);
+        
+    //sommo il numero randoman con quello generato
+    let finalresult = numberRandom + newNumber;
+    console.log(`"${finalresult}" ecco il risultato totale`);
+
+    //ritorno il risultato finale
+    return finalresult;
+}
+
+const pariDispari = prompt ('Vuoi essere Pari o Dispari?');
+
+if(pariDispari === ('Pari') || pariDispari === ('Dispari')){
+
+    const insertNumber = prompt ('Inserisci un numero da 1 a 5!');
+
+    //trasformo la stringa in numero
+    const newNumber = parseInt(insertNumber);
+
+    if(newNumber === 0 || newNumber > 5 || isNaN(newNumber)){
+        console.log('Inserisci un numero da 1 a 5')
+
+    }else{
+
+        // inserisco dentro resul il risultato totale della funzione
+        let result = sumNumber(newNumber);
+
+        if(result % 2 === 0){
+            console.log('Ha vinto Pari')
+        }else{
+            console.log('Ha vinto Dispari!')
+        }
+    }
+}else{
+    console.log('Devi inserire "Pari" o "Dispari"');
+}
+
