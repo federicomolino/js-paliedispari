@@ -44,7 +44,12 @@ submitButton.addEventListener('click', function(event){
 
 
 
-/*// Faccio Generare solo il numero random e ritorno il valore
+const inputNumber = document.querySelector('#inputInsertNumber');
+const submitButtonResult = document.querySelector('#submitResult');
+const resultPariDispari = document.querySelector('#resultPariDispari');
+
+
+// Faccio Generare solo il numero random e ritorno il valore
 function generationNumber(){
    return Math.floor((Math.random()* 5)+1)
 }
@@ -60,41 +65,49 @@ function sumNumber (newNumber){
     return finalresult;
 }
 
-//trasformo il valore inserito dall'utente tutto in minuscolo
-const pariDispari = InsertpariDispari.toLowerCase()
+submitButtonResult.addEventListener('click', function(event){
+    event.preventDefault()
 
-if(pariDispari === ('pari') || pariDispari === ('dispari')){
+    //assegno all variabile il valore inserito dall'utente
+    let pariDispari = inputNumber.value;
 
-    const insertNumber = prompt ('Inserisci un numero da 1 a 5!');
+    //trasformo il valore inserito dall'utente tutto in minuscolo
+    let pariDispariLower = pariDispari.toLowerCase();
 
-    //trasformo la stringa in numero
-    const newNumber = parseInt(insertNumber);
+    if(pariDispariLower === ('pari') || pariDispariLower === ('dispari')){
 
-    if(newNumber === 0 || newNumber > 5 || isNaN(newNumber)){
-        console.log('Inserisci un numero da 1 a 5')
+        const insertNumber = prompt ('Inserisci un numero da 1 a 5!');
 
+        //trasformo la stringa in numero
+        const newNumber = parseInt(insertNumber);
+
+        if(newNumber === 0 || newNumber > 5 || isNaN(newNumber)){
+            console.log('Inserisci un numero da 1 a 5')            
+
+        }else{
+
+            // inserisco dentro resul il risultato totale della funzione
+            let result = sumNumber(newNumber);
+
+            let resultUtent;
+
+            //verifico se pari o dispari
+            if(result % 2 === 0){
+                resultUtent = 'Pari';
+            }else{
+                resultUtent = 'Dispari';
+            }
+
+            //Verfico se il risultato è uguale quello inserito dall'utente
+            if(resultUtent === pariDispariLower){
+                console.log(`Hai vinto il risultano è:"${result}"`)
+            }else{
+                console.log(`Hai perso il risultano è:"${result}"`)
+            }
+        }
     }else{
-
-        // inserisco dentro resul il risultato totale della funzione
-        let result = sumNumber(newNumber);
-
-        let resultUtent;
-
-        //verifico se pari o dispari
-        if(result % 2 === 0){
-            resultUtent = 'Pari';
-        }else{
-            resultUtent = 'Dispari';
-        }
-
-        //Verfico se il risultato è uguale quello inserito dall'utente
-        if(resultUtent === pariDispari){
-            console.log(`Hai vinto il risultano è:"${result}"`)
-        }else{
-            console.log(`Hai perso il risultato è:"${result}"`)
-        }
+        console.log('Devi inserire "Pari" o "Dispari", occhio agli spazi!!!');
     }
-}else{
-    console.log('Devi inserire "Pari" o "Dispari", occhio agli spazi!!!');
-}*/
+})
+
 
