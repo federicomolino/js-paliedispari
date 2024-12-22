@@ -72,10 +72,12 @@ submitButtonResult.addEventListener('click', function(event){
     let pariDispari = inpuChoice.value;
 
     //trasformo il valore inserito dall'utente tutto in minuscolo
-    let pariDispariLower = pariDispari.toLowerCase();
-
+    let pariDispariLower = pariDispari.toLowerCase();  
+    
+    //assegno alla variabile il numero inserito dall'utente
     const insertNumber = inputNumber.value;
 
+    //tolgo input inserimento numero
     inputDivNumber.classList.toggle('d-none');
 
     spinnerButtonPariDispari.classList.toggle('d-none');
