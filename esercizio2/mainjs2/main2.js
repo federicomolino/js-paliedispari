@@ -5,6 +5,8 @@ const finalResult = document.querySelector('#result');
 const spinnerButton = document.querySelector('#spinnerButton')
 
 //Selezione elementi per Pari o Dispari
+const inpuChoice = document.querySelector('#inputInsertchoice');
+const inputDivNumber = document.querySelector('#inputDivNumber');
 const inputNumber = document.querySelector('#inputInsertNumber');
 const submitButtonResult = document.querySelector('#submitResult');
 const resultPariDispari = document.querySelector('#secondResult');
@@ -12,7 +14,7 @@ const spinnerButtonPariDispari = document.querySelector('#spinnerButtonPariDispa
 
 function insertText (nameText){
     const text = nameText;
-    if(isNaN(text)){
+    if(!isNaN(text)){
 
         //tutto minuscolo per evitare differeza tra maiusc e minsc
         const word = text.toLowerCase();
@@ -22,8 +24,6 @@ function insertText (nameText){
 
         //verifico che la prola sia uguale a quella girata e ritorno il valore
         return word === reverseWord;
-    }else{
-        console.log('Inserisci una parola!')
     }
 }
 
@@ -69,17 +69,21 @@ submitButtonResult.addEventListener('click', function(event){
     event.preventDefault()
 
     //assegno all variabile il valore inserito dall'utente
-    let pariDispari = inputNumber.value;
+    let pariDispari = inpuChoice.value;
 
     //trasformo il valore inserito dall'utente tutto in minuscolo
     let pariDispariLower = pariDispari.toLowerCase();
 
-    spinnerButtonPariDispari.classList.toggle('d-none')
+    const insertNumber = inputNumber.value;
+
+    inputDivNumber.classList.toggle('d-none');
+
+    spinnerButtonPariDispari.classList.toggle('d-none');
 
     setTimeout(() => {
-        if(pariDispariLower === ('pari') || pariDispariLower === ('dispari')){
 
-            const insertNumber = prompt ('Inserisci un numero da 1 a 5!');
+        if(pariDispariLower === ('pari') || pariDispariLower === ('dispari')){
+            
 
             //trasformo la stringa in numero
             const newNumber = parseInt(insertNumber);
