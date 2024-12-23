@@ -13,6 +13,7 @@ const submitButtonResult = document.querySelector('#submitResult');
 const resultPariDispari = document.querySelector('#secondResult');
 const spinnerButtonPariDispari = document.querySelector('#spinnerButtonPariDispari');
 const submitAgian = document.querySelector('#submitAgian');
+const labelNumber = document.querySelector('#labelNumber');
 
 function insertText (nameText){
     const text = nameText;
@@ -130,8 +131,9 @@ submitButtonResult.addEventListener('click', function(event){
         }
 
         spinnerButtonPariDispari.classList.toggle('d-none');
-
+    
         inputDivNumber.classList.toggle('d-none');
+        labelNumber.innerHTML =`Il numero che hai inserito è :`;
 
         // faccio apparire buttone riprova
         submitAgian.classList.remove('d-none');
