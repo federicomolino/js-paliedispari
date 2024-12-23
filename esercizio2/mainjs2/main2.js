@@ -3,16 +3,16 @@ const inputinsertText = document.querySelector('#insertText');
 const submitButton = document.querySelector('#submit');
 const finalResult = document.querySelector('#result');
 const spinnerButton = document.querySelector('#spinnerButton')
+const submitAgianPalindroma = document.querySelector('#submitAgianPalindroma');
 
 //Selezione elementi per Pari o Dispari
 const inpuChoice = document.querySelector('#inputInsertchoice');
 const inputDivNumber = document.querySelector('#inputDivNumber');
 const inputNumber = document.querySelector('#inputInsertNumber');
-const pariButton = document.querySelector('#pariButton')
-const dispariButton = document.querySelector('#dispariButton')
 const submitButtonResult = document.querySelector('#submitResult');
 const resultPariDispari = document.querySelector('#secondResult');
-const spinnerButtonPariDispari = document.querySelector('#spinnerButtonPariDispari')
+const spinnerButtonPariDispari = document.querySelector('#spinnerButtonPariDispari');
+const submitAgian = document.querySelector('#submitAgian');
 
 function insertText (nameText){
     const text = nameText;
@@ -47,6 +47,10 @@ submitButton.addEventListener('click', function(event){
         }
 
         spinnerButton.classList.toggle('d-none');
+        
+        submitAgianPalindroma.classList.remove('d-none');
+
+        submitButton.classList.add('d-none');
     }, 1500);
 })
 
@@ -124,8 +128,15 @@ submitButtonResult.addEventListener('click', function(event){
             resultPariDispari.innerHTML = 'Devi inserire "Pari" o "Dispari", occhio agli spazi!!!';
             resultPariDispari.classList.add('text-red');
         }
+
         spinnerButtonPariDispari.classList.toggle('d-none');
 
         inputDivNumber.classList.toggle('d-none');
+
+        // faccio apparire buttone riprova
+        submitAgian.classList.remove('d-none');
+
+        //tolgo bottone Verifica
+        submitButtonResult.classList.add('d-none');
     }, 1500);
 })
