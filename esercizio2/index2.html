@@ -28,7 +28,7 @@
         </form>
 
         <h2 class="mt-5">Pari o Dispari</h2>
-
+        
         <form>
             <div class="mt-5">
                 <label class="form-label text mb-3">Dimmi se vuoi essere Pari o Dispari</label>
@@ -37,12 +37,13 @@
 
             <div id="inputDivNumber" class="mt-5">
                 <label class="form-label text mb-3">Inserisci un numero da 1 a 5</label>
-                <input class="form-control" id="inputInsertNumber">
+                <input  type="number" class="form-control" id="inputInsertNumber">
             </div>
+            
 
             <p id="secondResult" class="text" >Hai vinto? ....</p> 
 
-            <button id="submitResult" class="btn btn-light mt-3">
+            <button id="submitResult" class="btn btn-light mt-3 btnWinlost">
                 <span id="spinnerButtonPariDispari" class="d-none spinner-border spinner-border-sm" aria-hidden="true"></span>
                 <span id="statusButton" role="status">Verifica</span>              
             </button>

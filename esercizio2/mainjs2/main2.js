@@ -8,13 +8,15 @@ const spinnerButton = document.querySelector('#spinnerButton')
 const inpuChoice = document.querySelector('#inputInsertchoice');
 const inputDivNumber = document.querySelector('#inputDivNumber');
 const inputNumber = document.querySelector('#inputInsertNumber');
+const pariButton = document.querySelector('#pariButton')
+const dispariButton = document.querySelector('#dispariButton')
 const submitButtonResult = document.querySelector('#submitResult');
 const resultPariDispari = document.querySelector('#secondResult');
 const spinnerButtonPariDispari = document.querySelector('#spinnerButtonPariDispari')
 
 function insertText (nameText){
     const text = nameText;
-    if(!isNaN(text)){
+    if(isNaN(text)){
 
         //tutto minuscolo per evitare differeza tra maiusc e minsc
         const word = text.toLowerCase();
@@ -38,6 +40,7 @@ submitButton.addEventListener('click', function(event){
     setTimeout(() => {
         if(insertText(nameText)){
             finalResult.innerHTML = `"${nameText}" è una parola palindroma!`;
+            finalResult.classList.add('normal-text');
         }else{
             finalResult.innerHTML = `"${nameText}" non è una parola palindroma!`;
             finalResult.classList.add('text-red');
@@ -111,17 +114,18 @@ submitButtonResult.addEventListener('click', function(event){
                 //Verfico se il risultato è uguale quello inserito dall'utente
                 if(resultUtent === pariDispariLower){
                     resultPariDispari.innerHTML =`Hai vinto il risultano è : ${result}"`;
+                    resultPariDispari.classList.add('normal-text');
                 }else{
                     resultPariDispari.innerHTML =`Hai perso il risultano è : ${result}`;
+                    resultPariDispari.classList.add('normal-text');
                 }
             }
         }else{
             resultPariDispari.innerHTML = 'Devi inserire "Pari" o "Dispari", occhio agli spazi!!!';
             resultPariDispari.classList.add('text-red');
         }
+        spinnerButtonPariDispari.classList.toggle('d-none');
 
-        spinnerButtonPariDispari.classList.toggle('d-none')
+        inputDivNumber.classList.toggle('d-none');
     }, 1500);
 })
-
-
