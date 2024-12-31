@@ -8,54 +8,67 @@
     <title>Giochi</title>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="d-flex p-2">
+        <div class="container mt-5">
 
-        <h1>La parola Palindroma e Pari Dispari</h1>
+            <h1>La parola Palindroma e Pari Dispari</h1>
 
-        <h2 class="mt-5">Parola Palindroma</h2>
-        <form>
-            <div class="mt-5">
-                <label class="form-label text mb-3">Inserisci la parola palindroma!</label>
-                <input class="form-control" id="insertText">
-            </div>
+            <h2 class="mt-5">Parola Palindroma</h2>
+            <form>
+                <div class="mt-5">
+                    <label class="form-label text mb-3">Inserisci la parola palindroma!</label>
+                    <input class="form-control" id="insertText">
+                </div>
 
-            <p id="result" class="text" >La parola inserita è palindroma? ....</p> 
+                <p id="result" class="text" >La parola inserita è palindroma? ....</p> 
 
-            <button id="submit" class="btn btn-light mt-3">
-                <span id="spinnerButton" class="d-none spinner-border spinner-border-sm" aria-hidden="true"></span>
-                <span id="statusButton" role="status">Verifica</span>              
-            </button>
+                <button id="submit" class="btn btn-light mt-3">
+                    <span id="spinnerButton" class="d-none spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span id="statusButton" role="status">Verifica</span>              
+                </button>
 
-            <button id="submitAgianPalindroma" class="btn btn-light mt-3 btnWinlost d-none">
-                <span id="statusButton" role="status">RIPROVA</span>              
-            </button>
-        </form>
+                <button id="submitAgianPalindroma" class="btn btn-light mt-3 btnWinlost d-none">
+                    <span id="statusButton" role="status">RIPROVA</span>              
+                </button>
+            </form>
 
-        <h2 class="mt-5">Pari o Dispari</h2>
-        
-        <form>
-            <div class="mt-5">
-                <label class="form-label text mb-3">Dimmi se vuoi essere Pari o Dispari</label>
-                <input class="form-control" id="inputInsertchoice">
-            </div>
-
-            <div id="inputDivNumber" class="mt-5">
-                <label id="labelNumber" class="form-label text mb-3">Inserisci un numero da 1 a 5</label>
-                <input  type="number" class="form-control" id="inputInsertNumber">
-            </div>
+            <h2 class="mt-5">Pari o Dispari</h2>
             
+            <form>
+                <div class="mt-5">
+                    <label class="form-label text mb-3">Dimmi se vuoi essere Pari o Dispari</label>
+                    <input class="form-control" id="inputInsertchoice">
+                </div>
 
-            <p id="secondResult" class="text" >Hai vinto? ....</p> 
+                <div id="inputDivNumber" class="mt-5">
+                    <label id="labelNumber" class="form-label text mb-3">Inserisci un numero da 1 a 5</label>
+                    <input  type="number" class="form-control" id="inputInsertNumber">
+                </div>
+                
 
-            <button id="submitResult" class="btn btn-light mt-3 btnWinlost">
-                <span id="spinnerButtonPariDispari" class="d-none spinner-border spinner-border-sm" aria-hidden="true"></span>
-                <span id="statusButton" role="status">Verifica</span>              
-            </button>
+                <p id="secondResult" class="text" >Hai vinto? ....</p> 
 
-            <button id="submitAgian" class="btn btn-light mt-3 btnWinlost d-none">
-                <span id="statusButton" role="status">RIPROVA</span>              
-            </button>
-        </form>
+                <button id="submitResult" class="btn btn-light mt-3 btnWinlost">
+                    <span id="spinnerButtonPariDispari" class="d-none spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span id="statusButton" role="status">Verifica</span>              
+                </button>
+
+                <button id="submitAgian" class="btn btn-light mt-3 btnWinlost d-none">
+                    <span id="statusButton" role="status">RIPROVA</span>              
+                </button>
+            </form>
+        </div>
+        
+        <div class="container-winLose d-flex p-2">
+            <div>
+               <h6 id="titleHistory">Storico Partite</h6>
+               
+               <button id="submitResult" class="btn btn-secondary mt-3 btnWinlost">
+                    <span id="spinnerStorico" class="d-none spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span id="PulisciStoricoButton" role="Storico">Pulisci Storico</span>              
+                </button>
+            </div>
+        </div>
     </div>
     <script src="./mainjs2/main2.js"></script>
 </body>
