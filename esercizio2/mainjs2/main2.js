@@ -14,6 +14,10 @@ const resultPariDispari = document.querySelector('#secondResult');
 const spinnerButtonPariDispari = document.querySelector('#spinnerButtonPariDispari');
 const submitAgian = document.querySelector('#submitAgian');
 const labelNumber = document.querySelector('#labelNumber');
+const list = document.querySelector("#list");
+const pulisciStoricoButton = document.querySelector("#pulisciStoricoButton");
+
+
 
 function insertText (nameText){
     const text = nameText;
@@ -57,6 +61,8 @@ submitButton.addEventListener('click', function(event){
 
 
 
+
+
 // Faccio Generare solo il numero random e ritorno il valore
 function generationNumber(){
    return Math.floor((Math.random()* 5)+1)
@@ -71,6 +77,28 @@ function sumNumber (newNumber){
     let finalresult = numberRandom + newNumber;
     //ritorno il risultato finale
     return finalresult;
+}
+
+//array in cui andranno salvati i risultati delle partite
+let history =[];
+
+function displayList (){
+    list.innerHTML ='';
+    for (i = 0; i < history.length; i++){
+        // Crea un nuovo elemento li
+        let addElementList = document.createElement("li");
+
+        // Imposta il testo dell'elemento li
+        addElementList.innerHTML = resultPariDispari.innerHTML;
+        
+        // Aggiungi l'elemento li all'ul
+        list.appendChild(addElementList);
+    }
+}
+
+//funzione per aggiungere i risultati all'interno dell'array
+function updateHistory (){
+    history.push(resultPariDispari.innerHTML);
 }
 
 submitButtonResult.addEventListener('click', function(event){
@@ -120,9 +148,15 @@ submitButtonResult.addEventListener('click', function(event){
                 if(resultUtent === pariDispariLower){
                     resultPariDispari.innerHTML =`Hai vinto il risultano è : ${result}"`;
                     resultPariDispari.classList.add('normal-text');
+                    updateHistory();
+                    displayList();
+                    pulisciStoricoButton.classList.remove("d-none")
                 }else{
                     resultPariDispari.innerHTML =`Hai perso il risultano è : ${result}`;
                     resultPariDispari.classList.add('normal-text');
+                    updateHistory();
+                    displayList();
+                    pulisciStoricoButton.classList.remove("d-none")
                 }
             }
         }else{
@@ -136,9 +170,19 @@ submitButtonResult.addEventListener('click', function(event){
         labelNumber.innerHTML =`Il numero che hai inserito è :`;
 
         // faccio apparire buttone riprova
-        submitAgian.classList.remove('d-none');
+        //submitAgian.classList.remove('d-none');
 
         //tolgo bottone Verifica
-        submitButtonResult.classList.add('d-none');
+        //submitButtonResult.classList.add('d-none');
+
+        pulisciStoricoButton.addEventListener ('click', function(){
+            // Svuota l'array elementList
+            history = [];
+             // Svuota il contenuto dell'elemento ul
+             list.innerHTML = '';
+        
+             //Rimuovo bottone
+             pulisciStoricoButton.classList.add('d-none');
+        })
     }, 1500);
 })
