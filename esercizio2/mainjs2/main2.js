@@ -15,7 +15,7 @@ const spinnerButtonPariDispari = document.querySelector('#spinnerButtonPariDispa
 const submitAgian = document.querySelector('#submitAgian');
 const labelNumber = document.querySelector('#labelNumber');
 const list = document.querySelector("#list");
-const pulisciStoricoButton = document.querySelector("#pulisciStoricoButton");
+const listHistory = document.querySelector('#listHistory');
 
 
 
@@ -76,7 +76,10 @@ function sumNumber (newNumber){
     //sommo il numero randoman con quello generato
     let finalresult = numberRandom + newNumber;
     //ritorno il risultato finale
+
+    console.log(`Numero random: ${numberRandom}, Numero utente: ${newNumber}, Somma: ${finalresult}`);
     return finalresult;
+
 }
 
 //array in cui andranno salvati i risultati delle partite
@@ -89,7 +92,7 @@ function displayList (){
         let addElementList = document.createElement("li");
 
         // Imposta il testo dell'elemento li
-        addElementList.innerHTML = resultPariDispari.innerHTML;
+        addElementList.innerHTML = history[i];
         
         // Aggiungi l'elemento li all'ul
         list.appendChild(addElementList);
@@ -139,24 +142,27 @@ submitButtonResult.addEventListener('click', function(event){
 
                 //verifico se pari o dispari
                 if(result % 2 === 0){
-                    resultUtent = 'Pari';
+                    resultUtent = 'pari';
                 }else{
-                    resultUtent = 'Dispari';
+                    resultUtent = 'dispari';
                 }
+
+                console.log(`Risultato somma: ${result}, Risultato Utente: ${resultUtent}, Scelta Utente: ${pariDispariLower}`);
+
 
                 //Verfico se il risultato è uguale quello inserito dall'utente
                 if(resultUtent === pariDispariLower){
-                    resultPariDispari.innerHTML =`Hai vinto il risultano è : ${result}"`;
+                    resultPariDispari.innerHTML =`Hai vinto il risultano è : ${result}`;
                     resultPariDispari.classList.add('normal-text');
+                    listHistory.classList.remove("d-none");
                     updateHistory();
                     displayList();
-                    pulisciStoricoButton.classList.remove("d-none")
                 }else{
                     resultPariDispari.innerHTML =`Hai perso il risultano è : ${result}`;
                     resultPariDispari.classList.add('normal-text');
+                    listHistory.classList.remove("d-none");
                     updateHistory();
                     displayList();
-                    pulisciStoricoButton.classList.remove("d-none")
                 }
             }
         }else{
@@ -181,8 +187,8 @@ submitButtonResult.addEventListener('click', function(event){
              // Svuota il contenuto dell'elemento ul
              list.innerHTML = '';
         
-             //Rimuovo bottone
-             pulisciStoricoButton.classList.add('d-none');
+             //Rimuovo lista
+             listHistory.classList.add("d-none");
         })
     }, 1500);
 })
