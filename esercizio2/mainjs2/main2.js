@@ -19,12 +19,20 @@ const listHistory = document.querySelector('#listHistory');
 const pulisciStoricoButton = document.querySelector('#pulisciStoricoButton');
 
 
-
 function insertText (nameText){
     const text = nameText;
-    if(isNaN(text)){
 
-        //tutto minuscolo per evitare differeza tra maiusc e minsc
+    if(!isNaN(text) || !text.trim()){
+        //Verifico che non sia un numero o ci siano spazi (.trim())
+        finalResult.innerHTML = `Hai inserito "${nameText}". Bisogna inserire del testo!`;
+        finalResult.classList.add('text-red');
+        return;
+
+    }else if(isNaN(text)){
+        //la parola non è palindroma
+        finalResult.innerHTML = `"${nameText}" non è una parola palindroma!`;
+        finalResult.classList.add('text-red');
+    }
         const word = text.toLowerCase();
 
         //trasformo con split(in array) in array, giro con la parola(reverse), concateno tutte le parole(join) 
@@ -32,7 +40,6 @@ function insertText (nameText){
 
         //verifico che la prola sia uguale a quella girata e ritorno il valore
         return word === reverseWord;
-    }
 }
 
 submitButton.addEventListener('click', function(event){
@@ -47,11 +54,7 @@ submitButton.addEventListener('click', function(event){
         if(insertText(nameText)){
             finalResult.innerHTML = `"${nameText}" è una parola palindroma!`;
             finalResult.classList.add('normal-text');
-        }else{
-            finalResult.innerHTML = `"${nameText}" non è una parola palindroma!`;
-            finalResult.classList.add('text-red');
         }
-
         spinnerButton.classList.toggle('d-none');
         
         submitAgianPalindroma.classList.remove('d-none');
