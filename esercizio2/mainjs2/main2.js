@@ -16,6 +16,7 @@ const submitAgian = document.querySelector('#submitAgian');
 const labelNumber = document.querySelector('#labelNumber');
 const list = document.querySelector("#list");
 const listHistory = document.querySelector('#listHistory');
+const pulisciStoricoButton = document.querySelector('#pulisciStoricoButton');
 
 
 
@@ -76,10 +77,7 @@ function sumNumber (newNumber){
     //sommo il numero randoman con quello generato
     let finalresult = numberRandom + newNumber;
     //ritorno il risultato finale
-
-    console.log(`Numero random: ${numberRandom}, Numero utente: ${newNumber}, Somma: ${finalresult}`);
     return finalresult;
-
 }
 
 //array in cui andranno salvati i risultati delle partite
@@ -147,9 +145,6 @@ submitButtonResult.addEventListener('click', function(event){
                     resultUtent = 'dispari';
                 }
 
-                console.log(`Risultato somma: ${result}, Risultato Utente: ${resultUtent}, Scelta Utente: ${pariDispariLower}`);
-
-
                 //Verfico se il risultato è uguale quello inserito dall'utente
                 if(resultUtent === pariDispariLower){
                     resultPariDispari.innerHTML =`Hai vinto il risultano è : ${result}`;
@@ -175,20 +170,18 @@ submitButtonResult.addEventListener('click', function(event){
         inputDivNumber.classList.toggle('d-none');
         labelNumber.innerHTML =`Il numero che hai inserito è :`;
 
-        // faccio apparire buttone riprova
-        //submitAgian.classList.remove('d-none');
-
-        //tolgo bottone Verifica
-        //submitButtonResult.classList.add('d-none');
-
         pulisciStoricoButton.addEventListener ('click', function(){
-            // Svuota l'array elementList
-            history = [];
-             // Svuota il contenuto dell'elemento ul
-             list.innerHTML = '';
+            event.preventDefault();
+            //chiediamo conferma all'utente prima di cancellare lo storico
+            if(confirm('Vuoi cancellare lo storico delle partite?')=== true){
+                // Svuota l'array elementList
+                history = [];
+                // Svuota il contenuto dell'elemento ul
+                list.innerHTML = '';
         
-             //Rimuovo lista
-             listHistory.classList.add("d-none");
+                //Rimuovo lista
+                listHistory.classList.add("d-none"); 
+            }
         })
     }, 1500);
 })
